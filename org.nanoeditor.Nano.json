@@ -1,0 +1,56 @@
+{
+  "app-id": "org.nanoeditor.Nano",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.32",
+  "sdk": "org.gnome.Sdk",
+  "command": "nano",
+  "cleanup": [
+    "/include",
+    "/lib/debug",
+    "/lib/*.a",
+    "/lib/*.la",
+    "/lib/pkgconfig",
+    "/share/man"
+  ],
+  "finish-args": [
+    "--filesystem=host",
+    "--filesystem=/tmp",
+    "--filesystem=/var/tmp",
+    "--share=ipc",
+    "--share=network",
+    "--socket=x11",
+    "--socket=wayland"
+  ],
+  "modules": [
+    {
+      "name": "nano",
+      "build-options": {
+        "env": {
+          "LIBS": "-lm"
+        },
+	"build-args": [ "--share=network" ]
+
+      },
+      "post-install": [
+        "install -D -m644 org.nanoeditor.Nano.png /app/share/icons/hicolor/128x128/apps/org.nano-editor.Nano.png",
+        "install -D -m644 org.nanoeditor.Nano.appdata.xml /app/share/appdata/org.nanoeditor.Nano.appdata.xml"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "git://git.savannah.gnu.org/nano.git",
+          "tag": "v4.2"
+        },
+        {
+          "type": "file",
+          "path": "org.nanoeditor.Nano.png"
+        },
+        {
+          "type": "file",
+          "path": "org.nanoeditor.Nano.appdata.xml"
+        }
+      ]
+    }
+  ]
+}
+
