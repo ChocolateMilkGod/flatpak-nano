@@ -15,10 +15,7 @@
   "finish-args": [
     "--filesystem=host",
     "--filesystem=/tmp",
-    "--filesystem=/var/tmp",
-    "--share=ipc",
-    "--socket=x11",
-    "--socket=wayland"
+    "--filesystem=/var/tmp"
   ],
   "modules": [
     {
